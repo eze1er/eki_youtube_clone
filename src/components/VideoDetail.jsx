@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
-import { ChangeCircle, CheckCircle } from "@mui/icons-material";
+import { CheckCircle } from "@mui/icons-material";
 
-import { Videos } from "./";
+import { Videos, Loader } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const VideoDetail = () => {
@@ -17,16 +17,16 @@ const VideoDetail = () => {
       setVideoDetail(data.items[0])
     );
 
-    fetchFromAPI(`search?part=snippet&relatedVideoId=&{id}&type=video`).then(
+    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
       (data) => setVideos(data.items)
     );
   }, [id]);
 
-  if (!videoDetail?.snippet) return "Loading...";
+  if (!videoDetail?.snippet) return <Loader />;
 
   const {
     snippet: { title, channelId, channelTitle },
-    statistics: { viewCount, likeCount },
+    statistics: { viewCount, likeCount }
   } = videoDetail;
 
   return (
@@ -54,7 +54,7 @@ const VideoDetail = () => {
                   variant={{ sm: "subtitle1", md: "h6" }}
                   color="#fff"
                 >
-                  {channelId.title}
+                  {channelTitle}
                   <CheckCircle
                     sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
                   />
@@ -72,15 +72,14 @@ const VideoDetail = () => {
           </Box>
         </Box>
         <Box
-        px={2}
-        py={{ md: 1, xs: 5 }}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Videos videos={videos} />
-      </Box>
+          px={2}
+          py={{ md: 1, xs: 5 }}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Videos videos={videos} direction="column" />
+        </Box>
       </Stack>
-
     </Box>
   );
 };

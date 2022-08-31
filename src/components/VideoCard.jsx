@@ -9,26 +9,25 @@ import {
   demoChannelUrl,
   demoChannelTitle,
 } from "../utils/constants";
-// import { CheckCircle } from "@mui/icons-material";
+
 import { borderRadius } from "@mui/system";
 
 const VideoCard = ({
   video: {
     id: { videoId },
-    snippet,
-  },
-}) => {
-  return (
+    snippet
+  }
+}) => (
     <Card
       sx={{
         width: { xs: "100%", sm: "358px", md: "320px" },
         boxShadow: "none",
-        borderRadius: 0,
+        borderRadius: 0
       }}
     >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <CardMedia
-          image={snippet?.thumbnails?.high?.url}
+          image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
           alt={snippet?.title}
           sx={{
             width: {
@@ -36,7 +35,7 @@ const VideoCard = ({
               sm: "358px",
               md: "320px",
             },
-            height: 180,
+            height: 180
           }}
         />
       </Link>
@@ -54,14 +53,15 @@ const VideoCard = ({
               : demoChannelUrl
           }
         >
-          <Typography variant="subtitle1" fontWeight="bold" color="gray">
+          <Typography variant="subtitle2" fontWeight="bold" color="gray">
             {snippet?.demoChannelTitle || demoChannelTitle}
-            <CheckCircleIcon sx={{ fontSize: '12px', color: "gray", ml: "5px" }} />
+            <CheckCircleIcon
+              sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+            />
           </Typography>
         </Link>
       </CardContent>
     </Card>
   );
-};
 
 export default VideoCard;

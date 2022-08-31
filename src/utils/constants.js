@@ -11,17 +11,22 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
+import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import HistoryIcon from '@mui/icons-material/History';
 
 export const logo = 'https://i.ibb.co/s9Qys2j/logo.png';
 
 export const categories = [
   { name: 'New', icon: <HomeIcon />, },
-  { name: 'JS Mastery', icon: <CodeIcon />, },
+  { name: 'Ezekiel-windows', icon:  <ConnectedTvIcon />, },
+  { name: 'Gospel', icon: <LibraryMusicIcon />, },
+  { name: "archéologie-en-terre-d'israël", icon: <HistoryIcon />, },
+  // { name: 'JS Mastery', icon: <CodeIcon />, },
+   
   { name: 'Coding', icon: <CodeIcon />, },
   { name: 'ReactJS', icon: <CodeIcon />, },
   { name: 'NextJS', icon: <CodeIcon />, },
-  { name: 'Gospel', icon: <DeveloperModeIcon />, },
-  { name: 'Ezekiel-windows', icon:  <LiveTvIcon />, },
   { name: 'Music', icon: <MusicNoteIcon /> },
   { name: 'Education', icon: <SchoolIcon />, },
   { name: 'Podcast', icon: <GraphicEqIcon />, },
